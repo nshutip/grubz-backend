@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "nshutip",
+    "password": "password",
+    "database": "grubz_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "nshutip",
+    "password": "password",
+    "database": "test_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "nshutip",
+    "password": "password",
+    "database": "prod_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
