@@ -6,7 +6,7 @@ const authenticate = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader)
-    return res.status(401).json({ message: 'Authorization header missing' });
+    return res.status(401).json({ message: 'Authorization header missing! You need to login first.' });
 
   const token = authHeader.split(' ')[1];
 
@@ -14,7 +14,7 @@ const authenticate = async (req, res, next) => {
     const decoded = jwt.verify(token, secret);
     const user = await User.findByPk(decoded.id);
 
-    if (!user) return res.status(401).json({ message: 'Invalid user' });
+    if (!user) return res.status(401).json({ message: 'Invalid user! You need to login first.' });
 
     req.user = {
       id: user.id,
@@ -24,7 +24,7 @@ const authenticate = async (req, res, next) => {
 
     next();
   } catch (err) {
-    return res.status(401).json({ message: 'Invalid or expired token' });
+    return res.status(401).json({ message: 'Invalid or expired token! You need to login first.' });
   }
 };
 

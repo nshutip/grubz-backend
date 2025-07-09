@@ -59,8 +59,10 @@ module.exports = (sequelize, DataTypes) => {
 
   // Hash password before saving
   User.beforeCreate(async (user, options) => {
-    const salt = await bcrypt.genSalt(10);
-    user.password_hash = await bcrypt.hash(user.password_hash, salt);
+    if (user.password_hash && !user.password_hash.startsWith('$2b$')) {
+      const salt = await bcrypt.genSalt(10);
+      user.password_hash = await bcrypt.hash(user.password_hash, salt);
+    }
   });
 
   return User;

@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
+const authenticate = require('../middleware/authMiddleware');
+const userController = require('../controllers/user.controller');
 
-router.get('/', async (req, res) => {
-  const users = await User.findAll();
-  res.json(users);
-});
+// router.use(authenticate);
 
-router.post('/', async (req, res) => {
-  const { name, email, password_hash, role, communityId } = req.body;
-  const user = await User.create({ name, email, password_hash, role, communityId });
-  res.status(201).json(user);
-});
+// router.get('/', authenticate, userController.getAllUsers);
+
+router.get('/', userController.getAllUsers);
+
+router.post('/', userController.createUser);
 
 module.exports = router;

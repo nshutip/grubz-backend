@@ -10,7 +10,7 @@ const generateToken = (user) => {
       communityId: user.communityId
     },
     secret,
-    { expiresIn: '7d' }
+    { expiresIn: '24h' }
   );
 };
 

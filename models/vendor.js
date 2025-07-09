@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
   const Vendor = sequelize.define('Vendor', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 'New Vendor'
     },
     description: {
       type: DataTypes.TEXT,

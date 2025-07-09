@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     method: {
-      type: DataTypes.ENUM('momo', 'card', 'wallet'),
+      type: DataTypes.ENUM('mpesa', 'stripe'),
       allowNull: false
-    },
+    },    
     transaction_id: {
       type: DataTypes.STRING,
       allowNull: true // Can be null before confirmation from gateway
